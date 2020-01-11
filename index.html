@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>WeekendTags</title>
+  <link rel="stylesheet" type="text/css" href="index.css">
+</head>
+<body>
+
+  <div class="container">
+    <header id="header">
+      <div>
+        <a href="#places-page"><img src="//habrastorage.org/webt/g9/nc/wh/g9ncwhzefx79w31rzfhpaz9yex4.png"></a>
+      </div>
+      <div id="menu">
+        <a href="#tags-page">Все теги</a>
+        <strong><a href="#add-place-page">Добавить место</a></strong>
+      </div>
+    </header>
+    
+    <div id="tags-page" style="display: none;">
+      Tags
+    </div>
+    <div id="add-place-page" style="display: none;">
+      <div id="add-place-message" class="message" style="display: none;">
+        Ваше место отправлено на проверку.
+        Спасибо, что вы принимаете участие в жизни проекта!
+      </div>
+      <form id="place-form">
+        <div>
+          <label for="url-field">Ссылка</label>
+          <input id="url-field" type="url" name="url" required>
+        </div>
+        <div>
+          <label for="tags-field">Тэги</label>
+          <input id="tags-field" type="text" name="tags" required>
+        </div>
+        <div id="place-form-tags" class="tags"></div>
+        <div>
+          <label for="email-field">Email</label>
+          <input id="email-field" type="email" name="email" required>
+        </div>
+        <button id="place-form-send-btn">
+         Отправить
+        </button>
+        &nbsp; &nbsp;
+        <a href="#places-page">Вернуться на главную</a>
+      </form>
+    </div>
+    <div id="places-page">
+      <form id="search-form" onsubmit="return false;">
+        <input type="search" name="search" placeholder="Искать по тегу или названию" id="search-form-input">
+      </form>
+
+      <div id="tags"></div>
+
+      <div id="places"></div>
+    </div>
+
+    <footer id="footer">
+      <a href="https://t.me/weekendtags">Telegram-канал</a>
+      <a href="https://github.com/jmas/weekendtags">Вноси изменения на GitHub</a>
+    </footer>
+  </div>
+  
+  <svg
+      xmlns="http://www.w3.org/2000/svg"
+      aria-hidden="true"
+      style="display: none;"
+  >
+      <!-- thumbup -->
+      <symbol id="icon-thumbup" viewBox="0 0 15 15">
+          <path d="M2.44858 4.90009H0.489728C0.22043 4.90009 0 5.1194 0 5.38978V14.2047C0 14.4749 0.219463 14.6943 0.489728 14.6943H2.44858C2.71884 14.6943 2.93831 14.4749 2.93831 14.2047V5.38978C2.93831 5.1194 2.71785 4.90009 2.44858 4.90009Z" fill="currentColor"/>
+          <path d="M13.7774 4.9001C13.6985 4.88674 10.0057 4.9001 10.0057 4.9001L10.5215 3.49291C10.8774 2.52101 10.647 1.03703 9.65946 0.509455C9.33793 0.337658 8.88869 0.251378 8.52649 0.34255C8.31878 0.394816 8.13623 0.532336 8.02742 0.716584C7.90229 0.928489 7.91521 1.17584 7.87065 1.4108C7.75765 2.00676 7.47605 2.57339 7.03996 2.9987C6.27965 3.74023 3.91776 5.8795 3.91776 5.8795V13.715H12.0797C13.181 13.7156 13.9028 12.4857 13.3596 11.525C14.0071 11.1103 14.2285 10.2369 13.8493 9.56619C14.4968 9.15149 14.7183 8.27801 14.339 7.60734C15.4562 6.89182 15.0827 5.12088 13.7774 4.9001Z" fill="currentColor"/>
+      </symbol>
+  </svg>
+
+  <script src="index.js"></script>
+  
+</body>
+</html>

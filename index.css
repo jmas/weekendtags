@@ -1,0 +1,228 @@
+* {
+  box-sizing: border-box;
+}
+
+html, body {
+  padding: 0;
+  margin: 0;
+}
+
+body {
+  font-family: sans-serif;
+  font-size: 16px;
+}
+
+input, button {
+  font-family: inherit;
+  font-size: inherit;
+}
+
+a {
+  color: #FF4128;
+  text-decoration: none;
+}
+
+a:hover {
+  text-decoration: underline;
+}
+
+input[type="url"], input[type="text"], input[type="email"] {
+  width: 100%;
+  margin-bottom: 20px;
+  height: 40px;
+  border-radius: 4px;
+  padding: 0 10px;
+  border: 1px solid #CBCBCB;
+  background-color: #fff;
+}
+
+button {
+  height: 40px;
+  border-radius: 4px;
+  padding: 0 10px;
+  background-color: #FF4128;
+  border: 1px solid #FF4128;
+  color: #fff;
+  cursor: pointer;
+}
+
+.tag {
+  display: inline-block;
+  padding: 8px 18px;
+  border: 1px solid #A8E5FF;
+  border-radius: 30px;
+  margin-right: 5px;
+  line-height: 1;
+  white-space: nowrap;
+  margin-bottom: 10px;
+}
+
+.tag svg {
+  width: 12px;
+  height: 12px;
+}
+
+.tag > * {
+  display: inline-block;
+  cursor: pointer;
+  color: #FF4128;
+}
+
+.tag > *[data-like] {
+  padding-left: 10px;
+  margin-left: 10px;
+  border-left: 1px solid #CBCBCB;
+  color: #FFCB63;
+}
+
+.container {
+  max-width: 950px;
+  margin-left: auto;
+  margin-right: auto;
+  padding: 40px 20px;
+}
+
+.place {
+  background: #FFFFFF;
+  border: 1px solid #CBCBCB;
+  box-sizing: border-box;
+  box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.06);
+  border-radius: 10px;
+  padding: 20px;
+  margin-bottom: 20px;
+}
+
+.place h2 {
+  margin-top: 0;
+}
+
+.pagination {
+  text-align: center;
+  padding-top: 20px;
+}
+
+.pagination > * {
+  display: inline-block;
+  border: 1px solid #CBCBCB;
+  padding: 8px 14px;
+  border-radius: 5px;
+  margin-left: 5px;
+  margin-right: 5px;
+  cursor: pointer;
+  color: #FF4128;
+}
+
+.pagination > *[data-current] {
+  color: #FFCB63;
+}
+
+.message {
+  padding: 20px;
+  border: 1px solid #A8E5FF;
+  background-color: #DBF4FF;
+  border-radius: 10px;
+  margin-bottom: 20px;
+}
+
+form label {
+  display: block;
+  margin-bottom: 5px;
+}
+
+.tags {
+  margin-bottom: 10px;
+}
+
+#header {
+  margin-bottom: 40px;
+  display: grid;
+  grid-template-columns: 1fr auto;
+}
+
+#header > *:first-child a {
+  position: relative;
+  display: inline-block;
+}
+
+#header > *:first-child a:after {
+  position: absolute;
+  top: 0;
+  left: 0;
+  display: block;
+  content: '';
+  width: 100%;
+  height: 100%;
+}
+
+#header img {
+  max-width: 306px;
+  min-width: 210px;
+  width: 100%;
+  display: inline-block;
+}
+
+#header > *:last-child {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+#menu a {
+  margin-left: 20px;
+}
+
+@media (max-width: 600px) {
+  #header {
+    display: block;
+    grid-template-columns: none;
+    text-align: center;
+  }
+
+  #header img {
+    margin-bottom: 20px;
+  }
+}
+
+
+#search-form > input {
+  height: 60px;
+  border: 2px solid #FFCB63;
+  transition: .3s;
+  transition-property: border-color, background-position, padding-left;
+  width: 100%;
+  border-radius: 10px;
+  padding-left: 55px;
+  padding-right: 20px;
+  margin-bottom: 20px;
+  background-image: url(https://habrastorage.org/webt/nh/ec/w_/nhecw_rg6-ph-dkfzqx2asagecy.png);
+  background-repeat: no-repeat;
+  background-position: 20px center;
+  outline: none;
+}
+
+#search-form > input:focus {
+  border-color: #FF4128;
+  background-position: -30px center;
+  padding-left: 20px;
+}
+
+#tags {
+  margin-bottom: 30px;
+}
+
+#tags > .tag {
+  margin-bottom: 10px;  
+}
+
+#footer {
+  border-top: 1px solid #A8E5FF;
+  margin-top: 40px;
+  padding-top: 20px;
+  text-align: center;
+}
+
+#footer > a {
+  color: #A8E5FF;
+  margin-left: 10px;
+  margin-right: 10px;
+}
