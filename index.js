@@ -71,7 +71,7 @@ function renderPlaces(response, loading) {
   places.onclick = function (event) {
     if (event.target.dataset.like) {
       event.preventDefault();
-      var prevContent = event.target.textContent;
+      var prevContent = event.target.innerHTML;
       event.target.textContent = '...';
       jsonp(APP_URL, {
         action: 'add-like',
