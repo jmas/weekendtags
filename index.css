@@ -62,13 +62,13 @@ button {
   height: 12px;
 }
 
-.tag > * {
+.tag>* {
   display: inline-block;
   cursor: pointer;
   color: #FF4128;
 }
 
-.tag > *[data-like] {
+.tag>*[data-like] {
   padding-left: 10px;
   margin-left: 10px;
   border-left: 1px solid #CBCBCB;
@@ -101,7 +101,7 @@ button {
   padding-top: 20px;
 }
 
-.pagination > * {
+.pagination>* {
   display: inline-block;
   border: 1px solid #CBCBCB;
   padding: 8px 14px;
@@ -112,7 +112,7 @@ button {
   color: #FF4128;
 }
 
-.pagination > *[data-current] {
+.pagination>*[data-current] {
   color: #FFCB63;
 }
 
@@ -139,12 +139,12 @@ form label {
   grid-template-columns: 1fr auto;
 }
 
-#header > *:first-child a {
+#header>*:first-child a {
   position: relative;
   display: inline-block;
 }
 
-#header > *:first-child a:after {
+#header>*:first-child a:after {
   position: absolute;
   top: 0;
   left: 0;
@@ -161,7 +161,7 @@ form label {
   display: inline-block;
 }
 
-#header > *:last-child {
+#header>*:last-child {
   display: flex;
   align-items: center;
   justify-content: center;
@@ -177,14 +177,12 @@ form label {
     grid-template-columns: none;
     text-align: center;
   }
-
   #header img {
     margin-bottom: 20px;
   }
 }
 
-
-#search-form > input {
+#search-form>input {
   height: 60px;
   border: 2px solid #FFCB63;
   transition: .3s;
@@ -200,7 +198,7 @@ form label {
   outline: none;
 }
 
-#search-form > input:focus {
+#search-form>input:focus {
   border-color: #FF4128;
   background-position: -30px center;
   padding-left: 20px;
@@ -210,8 +208,8 @@ form label {
   margin-bottom: 30px;
 }
 
-#tags > .tag {
-  margin-bottom: 10px;  
+#tags>.tag {
+  margin-bottom: 10px;
 }
 
 #footer {
@@ -221,7 +219,7 @@ form label {
   text-align: center;
 }
 
-#footer > a {
+#footer>a {
   color: #A8E5FF;
   margin-left: 10px;
   margin-right: 10px;
