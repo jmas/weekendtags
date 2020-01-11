@@ -72,6 +72,10 @@ function getSearchValue() {
   return tagsInput.value;
 }
 
+function getPhotosHtml(photos) {
+  return `<ul class="photos">${photos.map(photo => `<li><img src="${photo}"></li>`).join('')}</ul>`;  
+}
+
 function renderPlaces(response, loading) {
   var places = document.getElementById('places');
   if (loading) {
@@ -98,10 +102,12 @@ function renderPlaces(response, loading) {
     }
   };
   places.innerHTML = items.length > 0 ? items.map(function (item) {
+    console.log(item);
     return `
   		<div class="place">
       	<h2><a href="${item.url}" target="_blank">${item.place ? item.place.name : '(unnamed)'}</a></h2>
         ${Object.keys(item.tags).map(tag => geTagHtml(tag, item.tags[tag], item.url)).join('')}
+        ${item.place && item.place.photos ? getPhotosHtml(item.place.photos) : ''}
       </div>
   	`;
   }).join('') : 'К сожалению, пока ничего нет';
