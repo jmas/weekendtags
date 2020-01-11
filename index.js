@@ -1,6 +1,7 @@
 var APP_URL = 'https://script.google.com/macros/s/AKfycbxp2m7CaTvKvZDp5WXdMHzP1uP2bS646sK1wX8y5idnZbtz0zg/exec';
 
 function loadPlaces(search, page) {
+  var page = page ? page : 1;
   renderPlaces(null, true);
   return jsonp(APP_URL, {
     action: 'get-places',
@@ -11,7 +12,8 @@ function loadPlaces(search, page) {
 
 function loadTags() {
   return jsonp(APP_URL, {
-    action: 'get-tags'
+    action: 'get-tags',
+    limit: 10
   }).then(renderTags);
 }
 
@@ -54,11 +56,20 @@ function renderTags(items) {
   tags.onclick = function (event) {
     event.preventDefault();
     if (event.target.dataset.tag) {
-      var tagsInput = document.getElementById('search-form-input');
-      tagsInput.value = tagsInput.value.split(',').concat([event.target.dataset.tag]).map(function (item) { return item.trim(); }).filter(function (item) { return Boolean(String(item)); }).join(' ');
-      loadPlaces(tagsInput.value);
+      addSearchValue(event.target.dataset.tag);
+      loadPlaces(getSearchValue());
     }
   };
+}
+
+function addSearchValue(value, replace) {
+  var tagsInput = document.getElementById('search-form-input');
+  tagsInput.value = (replace ? [] : tagsInput.value.split(',')).concat([value]).map(function (item) { return item.trim(); }).filter(function (item) { return Boolean(String(item)); }).join(' ');
+}
+
+function getSearchValue() {
+  var tagsInput = document.getElementById('search-form-input');
+  return tagsInput.value;
 }
 
 function renderPlaces(response, loading) {
@@ -114,6 +125,14 @@ function initPlaces() {
 function initPlaceForm() {
   var sendBtn = document.getElementById('place-form-send-btn');
   var form = document.getElementById('place-form');
+  var tags = document.getElementById('place-form-tags');
+  tags.onclick = function (event) {
+    event.preventDefault();
+    if (event.target.dataset.tag) {
+      var tagsInput = document.getElementById('tags-field');
+      tagsInput.value = tagsInput.value.split(',').concat([event.target.dataset.tag]).map(function (item) { return item.trim(); }).filter(function (item) { return Boolean(String(item)); }).join(', ');
+    }
+  };
   form.onsubmit = function (event) {
     event.preventDefault();
     var data = Object.fromEntries(new FormData(event.target));
@@ -125,20 +144,12 @@ function initPlaceForm() {
       showMessage('add-place-message');
     });
   };
-  return jsonp(APP_URL, {
+  jsonp(APP_URL, {
     action: 'get-tags'
   }).then(function (items) {
-    var tags = document.getElementById('place-form-tags');
     tags.innerHTML = items.map(function (tag) {
       return geTagHtml(tag.name);
     }).join('');
-    tags.onclick = function (event) {
-      event.preventDefault();
-      if (event.target.dataset.tag) {
-        var tagsInput = document.getElementById('tags-field');
-        tagsInput.value = tagsInput.value.split(',').concat([event.target.dataset.tag]).map(function (item) { return item.trim(); }).filter(function (item) { return Boolean(String(item)); }).join(', ');
-      }
-    };
   });
 }
 
@@ -170,6 +181,26 @@ function initLinks() {
   };
 }
 
+function initTagsList() {
+  var tagsList = document.getElementById('tags-list');
+  tagsList.onclick = function (event) {
+    event.preventDefault();
+    if (event.target.dataset.tag) {
+      addSearchValue(event.target.dataset.tag, true);
+      loadPlaces(getSearchValue());
+      showPage('places-page');
+    }
+  };
+  jsonp(APP_URL, {
+    action: 'get-tags',
+    limit: 100
+  }).then(function (items) {
+    tagsList.innerHTML = items.map(function (tag) {
+      return geTagHtml(tag.name, tag.likes);
+    }).join('');
+  });
+}
+
 function showPage(id) {
   [
     'tags-page',
@@ -186,6 +217,7 @@ function run() {
   initPlaceForm();
   initSearchForm();
   initLinks();
+  initTagsList();
 }
 
 function jsonp(url, data) {
