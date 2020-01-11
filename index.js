@@ -73,7 +73,7 @@ function getSearchValue() {
 }
 
 function getPhotosHtml(photos) {
-  return `<ul class="photos">${photos.map(photo => `<li><img src="${photo}"></li>`).join('')}</ul>`;  
+  return `<ul class="photos">${photos.map(photo => `<li><a href="${photo}" target="_blank"><img src="${photo}"></a></li>`).join('')}</ul>`;  
 }
 
 function renderPlaces(response, loading) {
