@@ -27,8 +27,11 @@ function getLikeText(count) {
 function geTagHtml(tag, likes, url) {
   return `
   	<span class="tag">
-      <span data-url="${url ? url : ''}" data-tag="${tag}" data-button="1">${tag}</span>${likes ? `<span data-url="${url ? url : ''}" data-tag="${tag}" data-like="1">
-      	
+      <span
+        data-url="${url ? url : ''}"
+        data-tag="${tag}"
+        data-button="1"
+      >${tag}</span>${likes ? `<span data-url="${url ? url : ''}" data-tag="${tag}" data-like="1">
       	${getLikeText(likes)}</span>` : ''}
     </span>
   `;
@@ -184,11 +187,6 @@ function run() {
   initSearchForm();
   initLinks();
 }
-
-
-
-
-
 
 function jsonp(url, data) {
   return new Promise(function (resolve, reject) {
