@@ -102,7 +102,6 @@ function renderPlaces(response, loading) {
     }
   };
   places.innerHTML = items.length > 0 ? items.map(function (item) {
-    console.log(item);
     return `
   		<div class="place">
       	<h2><a href="${item.url}" target="_blank">${item.place ? item.place.name : '(unnamed)'}</a></h2>
