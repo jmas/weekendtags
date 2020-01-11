@@ -40,7 +40,7 @@ function geTagHtml(tag, likes, url) {
 }
 
 function getPaginationHtml(page, total, limit) {
-  var pagesCount = Math.round(total / limit);
+  var pagesCount = Math.ceil(total / limit);
   var links = [];
   for (var i = 0; i < pagesCount; i++) {
     links.push(`<span data-page="${i + 1}" ${page === i + 1 ? 'data-current' : ''}>${i + 1}</span>`);
