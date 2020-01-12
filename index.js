@@ -100,6 +100,10 @@ function renderPlaces(response, loading) {
       event.preventDefault();
       loadPlaces(null, event.target.dataset.page);
     }
+    if (event.target.dataset.tag) {
+      addSearchValue(event.target.dataset.tag, true);
+      loadPlaces();
+    }
   };
   places.innerHTML = items.length > 0 ? items.map(function (item) {
     return `
