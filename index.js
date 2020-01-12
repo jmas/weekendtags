@@ -178,7 +178,12 @@ function initLinks() {
   document.body.onclick = function (event) {
     if (event.target.tagName.toLowerCase() === 'a') {
       var href = event.target.getAttribute('href');
-      if (href[0] === '#') {
+      if (href === '#places-page') {
+        event.preventDefault();
+        showPage(href.substring(1));
+        addSearchValue('', true);
+        loadPlaces();
+      } else if (href[0] === '#') {
         event.preventDefault();
         showPage(href.substring(1));
       }
