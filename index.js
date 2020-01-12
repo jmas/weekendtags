@@ -56,7 +56,7 @@ function renderTags(items) {
   tags.onclick = function (event) {
     event.preventDefault();
     if (event.target.dataset.tag) {
-      addSearchValue(event.target.dataset.tag);
+      addSearchValue(event.target.dataset.tag, true);
       loadPlaces(getSearchValue());
     }
   };
